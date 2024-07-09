@@ -55,3 +55,6 @@ next-env.d.ts
 
 # es-lint
 .eslintcache
+
+# File I'm using in this project to print ESLint rules for specific files
+rules.json
