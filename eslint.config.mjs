@@ -1,5 +1,5 @@
 import globals from 'globals';
-import pluginJs from '@eslint/js';
+import eslintjs from '@eslint/js';
 
 const configList = [
     {
@@ -13,7 +13,16 @@ const configList = [
         // The second prevents linting of any file named `dont-touch.js`.
         ignores: ['src/data/**/*.{js,mjs,cjs,jsx}', '**/dont-touch.js'],
     },
-    pluginJs.configs.recommended, // This enables all the rules designated as "recommended" here: https://eslint.org/docs/latest/rules/
+    eslintjs.configs.recommended, // This enables all the rules designated as "recommended" here: https://eslint.org/docs/latest/rules/
+    {
+        // This turns off the 'no-fallthrough' rule, and turns off the 'require-atomic-updates' rule.
+        // These both would otherwise have the opposite setting according to the recommended rules enabled above.
+        // 'require-atomic-updates' is set to show as an error when the issue is found by ESLint.
+        rules: {
+            'no-fallthrough': 'off',
+            'require-atomic-updates': 'error',
+        },
+    },
     {
         // This sets which globals ESLint knows about when evaluating its 'no-global-assign' rule
         languageOptions: {
@@ -37,4 +46,3 @@ const configList = [
 ];
 
 export default configList;
- 
